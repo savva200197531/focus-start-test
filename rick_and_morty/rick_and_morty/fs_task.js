@@ -8,16 +8,16 @@ class Search {
   }
 
   findWord(event) {
-    const target = event.target
+    const string = event.target.value
     const filteredArr = Array.from(this.allLinks).filter(link => {
-      if (link.textContent.trim().toLowerCase().includes(target.value.trim().toLowerCase())) {
+      if (link.textContent.trim().toLowerCase().includes(string.trim().toLowerCase())) {
         return link
       }
     })
-    if (target.value.trim().length > 0) {
+    if (string.trim().length > 0) {
       filteredArr.forEach(link => {
         let element = link.textContent
-        const reg = new RegExp(target.value.replace(/[-\/\\^$*+?.()|[\]{}]/g,'\\$&'), 'gi');
+        const reg = new RegExp(string.trim().replace(/[-\/\\^$*+?.()|[\]{}]/g,'\\$&'), 'gi');
         const result = element.replace(reg, str => `<span class="text-highlighted">${str}</span>`)
         element = `<li><a href="${link.href}">${result}</a></li>`
 
@@ -51,3 +51,5 @@ function loadContent() {
 }
 
 window.addEventListener('DOMContentLoaded', loadContent)
+
+
