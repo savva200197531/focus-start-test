@@ -17,10 +17,9 @@ class Search {
     if (string.trim().length > 0) {
       filteredArr.forEach(link => {
         let element = link.textContent
-        const reg = new RegExp(string.trim().replace(/[-\/\\^$*+?.()|[\]{}]/g,'\\$&'), 'gi');
-        const result = element.replace(reg, str => `<span class="text-highlighted">${str}</span>`)
-        element = `<li><a href="${link.href}">${result}</a></li>`
-
+        const reg = new RegExp(string.trim().replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'gi');
+        const result = element.replace(reg, str => `<span class="text-highlighted">${ str }</span>`)
+        element = `<li><a href="${ link.href }">${ result }</a></li>`
         this.filteredLinks.push(element)
       })
     } else {
@@ -29,7 +28,7 @@ class Search {
     this.counter = this.filteredLinks.length
     this.resultList.innerHTML = this.filteredLinks.join('')
     if (this.counter > 0) {
-      this.resultCounter.textContent = `Найдено ${this.counter} совпадений`
+      this.resultCounter.textContent = `Найдено ${ this.counter } совпадений`
     } else {
       this.resultCounter.textContent = 'Ничего не найдено'
     }
