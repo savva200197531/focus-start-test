@@ -18,7 +18,7 @@ class Search {
       filteredArr.forEach(link => {
         let element = link.textContent
         const reg = new RegExp(string.trim().replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'gi');
-        const result = element.replace(reg, str => `<span class="text-highlighted">${ str }</span>`)
+        const result = element.replace(reg, str => `<mark>${ str }</mark>`)
         element = `<li><a href="${ link.href }">${ result }</a></li>`
         this.filteredLinks.push(element)
       })
